@@ -4,23 +4,18 @@
 //get element event occured on: ev.target
 
 const button = document.querySelector('button.greeting');
-const head1 = document.querySelector('#head2');
 
-let val = 0;
+const head = document.querySelector('#head1');
+
 
 function changeText(){
-    val++;
-    if(val > 2){
-        val = 1;
+    const input = document.querySelector('#text1').value;
+    if(input == ''){
+        alert('type something');
     }
-     
-    if(val == 1){
-        head1.textContent = 'Changed'; 
-    }
-    else if(val == 2){
-        head1.textContent = 'Header 2'; 
-    }
-    
+    else{
+        head.textContent = input;
+    }   
 }
 
 button.addEventListener('click', changeText);
