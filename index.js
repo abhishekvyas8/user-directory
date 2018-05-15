@@ -4,20 +4,19 @@
 //get element event occured on: ev.target
 
 //const button = document.querySelector('button.greeting');
-
-const head = document.querySelector('h1');
 const form = document.querySelector('#userForm');
 
 
 const changeText = function(ev){
     ev.preventDefault();
-    const input = ev.target.text1.value;
+    const user = document.querySelector('#users');
+    const input = ev.target.userName.value;
     //debugger
     if(input == ''){
         alert('Enter Something');
     }
     else{
-        head.textContent = input;
+        user.textContent += input + ' ';
     }  
 }
 
