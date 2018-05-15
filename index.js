@@ -16,7 +16,7 @@ const changeText = function(ev){
         alert('Enter Something');
     }
     else{
-        user.textContent += input + ' ';
+        user.innerHTML += '<p>' + input + '</p> ';
     } 
     ev.target.userName.value = ''; 
 }
