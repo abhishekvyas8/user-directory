@@ -17,7 +17,8 @@ const changeText = function(ev){
     }
     else{
         user.textContent += input + ' ';
-    }  
+    } 
+    ev.target.userName.value = ''; 
 }
 
 form.addEventListener('submit', changeText);
