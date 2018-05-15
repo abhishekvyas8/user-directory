@@ -14,7 +14,7 @@ const changeText = function(ev){
     const age = ev.target.age.value
     //debugger
     if(userName == '' || age == ''){
-        alert('Enter Something');
+        alert('Empty Field');
     }
     else{
         user.innerHTML += '<p>' + userName + ', ' + age + '</p> ';
