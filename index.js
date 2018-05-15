@@ -29,12 +29,15 @@ const changeText = function(ev){
         list.appendChild(ageItem);
 
         const favColorItem = document.createElement('li');
-        favColorItem.textContent = `Favorite Color: ${favColor}`;   
+        favColorItem.textContent = `Favorite Color: `;  
+        const colorDiv = document.createElement('div');
+        colorDiv.style.backgroundColor = favColor;
+        colorDiv.style.height = '3rem';
+        colorDiv.style.width = '6rem';
+        favColorItem.appendChild(colorDiv); 
         list.appendChild(favColorItem);
 
         user.appendChild(list);
-
-        favColorItem.style.color = favColor;
     } 
     
     ev.target.reset();
