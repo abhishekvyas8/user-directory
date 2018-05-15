@@ -20,6 +20,7 @@ const changeText = function(ev){
         const p = document.createElement('p');
         p.textContent = `${userName}, ${age}`;
         user.appendChild(p);
+        p.style.backgroundColor = ev.target.favoriteColor.value;
     } 
     
     ev.target.reset();
