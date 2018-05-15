@@ -6,7 +6,6 @@
 //const button = document.querySelector('button.greeting');
 const form = document.querySelector('#userForm');
 
-
 const changeText = function(ev){
     ev.preventDefault();
     const user = document.querySelector('#users');
@@ -17,7 +16,7 @@ const changeText = function(ev){
         alert('Empty Field');
     }
     else{
-        user.innerHTML += '<p>' + userName + ', ' + age + '</p> ';
+        user.innerHTML += `<p>${userName}, ${age}</p>`;
     } 
     
     ev.target.reset();
