@@ -8,22 +8,15 @@ const form = document.querySelector('#userForm');
 
 const changeText = function(ev){
     ev.preventDefault();
-    const user = document.querySelector('#users');
     const userName = ev.target.userName.value;
     const age = ev.target.age.value
-    const favColor = ev.target.favoriteColor.value;
+    const user = document.querySelector('#users');
     //debugger
     if(userName == '' || age == ''){
         alert('Empty Field');
     }
     else{
-        const list = document.createElement('ul');
-
-        list.appendChild(renderListItem('Name', userName));
-        list.appendChild(renderListItem('Age', age));
-        list.appendChild(renderListItem('Favorite Color', favColor).appendChild(renderColor(favColor)));
-
-        user.appendChild(list);
+        user.appendChild(renderList(ev));
     } 
     
     ev.target.reset();
@@ -47,6 +40,20 @@ function renderListItem(value1, value2){
         item.textContent = `${value1}`
     }
     return item;
+}
+
+function renderList(ev){
+    const userName = ev.target.userName.value;
+    const age = ev.target.age.value
+    const favColor = ev.target.favoriteColor.value;
+
+    const list = document.createElement('ul');
+
+    list.appendChild(renderListItem('Name', userName));
+    list.appendChild(renderListItem('Age', age));
+    list.appendChild(renderListItem('Favorite Color', favColor).appendChild(renderColor(favColor)));
+
+    return list;
 }
 
 form.addEventListener('submit', changeText);
