@@ -19,8 +19,8 @@ const changeText = function(ev){
     else{
         user.innerHTML += '<p>' + userName + ', ' + age + '</p> ';
     } 
-    ev.target.userName.value = ''; 
-    ev.target.age.value = ''; 
+    
+    ev.target.reset();
 }
 
 form.addEventListener('submit', changeText);
