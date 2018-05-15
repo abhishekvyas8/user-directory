@@ -16,7 +16,10 @@ const changeText = function(ev){
         alert('Empty Field');
     }
     else{
-        user.innerHTML += `<p>${userName}, ${age}</p>`;
+        //user.innerHTML += `<p>${userName}, ${age}</p>`;
+        const p = document.createElement('p');
+        p.textContent = `${userName}, ${age}`;
+        user.appendChild(p);
     } 
     
     ev.target.reset();
