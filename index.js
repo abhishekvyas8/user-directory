@@ -17,31 +17,36 @@ const changeText = function(ev){
         alert('Empty Field');
     }
     else{
-        //user.innerHTML += `<p>${userName}, ${age}</p>`;
         const list = document.createElement('ul');
 
-        const nameItem = document.createElement('li');
-        nameItem.textContent = `Name: ${userName}`;
-        list.appendChild(nameItem);
-
-        const ageItem = document.createElement('li');
-        ageItem.textContent = `Age: ${age}`;
-        list.appendChild(ageItem);
-
-        const favColorItem = document.createElement('li');
-        favColorItem.textContent = `Favorite Color: `;  
-        const colorDiv = document.createElement('div');
-        colorDiv.style.backgroundColor = favColor;
-        colorDiv.style.height = '3rem';
-        colorDiv.style.width = '6rem';
-        favColorItem.appendChild(colorDiv); 
-        list.appendChild(favColorItem);
+        list.appendChild(renderListItem('Name', userName));
+        list.appendChild(renderListItem('Age', age));
+        list.appendChild(renderListItem('Favorite Color', favColor).appendChild(renderColor(favColor)));
 
         user.appendChild(list);
     } 
     
     ev.target.reset();
     ev.target.userName.focus();
+}
+
+function renderColor(favColor){
+    const colorDiv = document.createElement('div');
+    colorDiv.style.backgroundColor = favColor;
+    colorDiv.style.height = '3rem';
+    colorDiv.style.width = '6rem';
+    return colorDiv;
+}
+
+function renderListItem(value1, value2){
+    const item = document.createElement('li');
+    if(value1 != 'Favortie Color'){   
+        item.textContent = `${value1}: ${value2}`;
+    }
+    else{
+        item.textContent = `${value1}`
+    }
+    return item;
 }
 
 form.addEventListener('submit', changeText);
