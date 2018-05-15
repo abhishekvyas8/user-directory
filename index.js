@@ -21,6 +21,7 @@ const changeText = function(ev){
     } 
     
     ev.target.reset();
+    ev.target.userName.focus();
 }
 
 form.addEventListener('submit', changeText);
