@@ -3,19 +3,22 @@
 
 //get element event occured on: ev.target
 
-const button = document.querySelector('button.greeting');
+//const button = document.querySelector('button.greeting');
 
-const head = document.querySelector('#head1');
+const head = document.querySelector('h1');
+const form = document.querySelector('#userForm');
 
 
-function changeText(){
-    const input = document.querySelector('#text1').value;
+const changeText = function(ev){
+    ev.preventDefault();
+    const input = ev.target.text1.value;
+    //debugger
     if(input == ''){
-        alert('type something');
+        alert('Enter Something');
     }
     else{
         head.textContent = input;
-    }   
+    }  
 }
 
-button.addEventListener('click', changeText);
+form.addEventListener('submit', changeText);
