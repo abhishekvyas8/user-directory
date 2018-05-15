@@ -10,15 +10,17 @@ const form = document.querySelector('#userForm');
 const changeText = function(ev){
     ev.preventDefault();
     const user = document.querySelector('#users');
-    const input = ev.target.userName.value;
+    const userName = ev.target.userName.value;
+    const age = ev.target.age.value
     //debugger
-    if(input == ''){
+    if(userName == '' || age == ''){
         alert('Enter Something');
     }
     else{
-        user.innerHTML += '<p>' + input + '</p> ';
+        user.innerHTML += '<p>' + userName + ', ' + age + '</p> ';
     } 
     ev.target.userName.value = ''; 
+    ev.target.age.value = ''; 
 }
 
 form.addEventListener('submit', changeText);
