@@ -6,7 +6,7 @@
 //const button = document.querySelector('button.greeting');
 const form = document.querySelector('#userForm');
 
-const changeText = function(ev){
+const handleSubmit = function(ev){
     ev.preventDefault();
     const userName = ev.target.userName.value;
     const age = ev.target.age.value
@@ -33,27 +33,31 @@ function renderColor(favColor){
 
 function renderListItem(value1, value2){
     const item = document.createElement('li');
-    if(value1 != 'Favortie Color'){   
-        item.textContent = `${value1}: ${value2}`;
+    item.textContent = `${value1}: `;
+    try{
+        item.appendChild(value2);
     }
-    else{
-        item.textContent = `${value1}`
+    catch(e){
+        item.textContent += value2;
     }
     return item;
 }
 
 function renderList(ev){
-    const userName = ev.target.userName.value;
-    const age = ev.target.age.value
-    const favColor = ev.target.favoriteColor.value;
+    const user = {
+        userName: ev.target.userName.value,
+        age: ev.target.age.value,
+        favColor: renderColor(ev.target.favoriteColor.value),
+    }
 
     const list = document.createElement('ul');
-
-    list.appendChild(renderListItem('Name', userName));
-    list.appendChild(renderListItem('Age', age));
-    list.appendChild(renderListItem('Favorite Color', favColor).appendChild(renderColor(favColor)));
+    
+    const labels = Object.keys(user);
+    labels.forEach(function(label){
+        list.appendChild(renderListItem(label, user[label]));
+    })
 
     return list;
 }
 
-form.addEventListener('submit', changeText);
+form.addEventListener('submit', handleSubmit);
