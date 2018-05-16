@@ -36,19 +36,25 @@ function renderColor(favColor){
 
 function renderListItem(value1, value2){
     const item = document.createElement('li');
-    item.textContent = `${value1}: `;
+    
+    const term = document.createElement('dt');
+    term.textContent = value1;
+    const description = document.createElement('dd');
     try{
-        item.appendChild(value2);
+        description.appendChild(value2);
     }
     catch(e){
-        item.textContent += value2;
+        description.textContent += value2;
     }
+
+    item.appendChild(term);
+    item.appendChild(description);
     return item;
 }
 
 function renderList(data){
     
-    const list = document.createElement('ul');
+    const list = document.createElement('dl');
     
     const labels = Object.keys(data);
     labels.forEach((label) => {
