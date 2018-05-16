@@ -22,3 +22,11 @@ label{
 dl > li{
     list-style: none;
 }
+
+dl{
+    padding: 1rem;
+}
+
+dl:nth-of-type(even){
+    background-color: whitesmoke;
+}
