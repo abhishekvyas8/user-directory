@@ -8,15 +8,18 @@ const form = document.querySelector('#userForm');
 
 const handleSubmit = function(ev){
     ev.preventDefault();
-    const userName = ev.target.userName.value;
-    const age = ev.target.age.value
-    const user = document.querySelector('#users');
-    //debugger
-    if(userName == '' || age == ''){
+    const users = document.querySelector('#users');
+    const user = {
+        userName: ev.target.userName.value,
+        age: ev.target.age.value,
+        favColor: renderColor(ev.target.favoriteColor.value),
+    }
+
+    if(user.userName == '' || user.age == ''){
         alert('Empty Field');
     }
     else{
-        user.appendChild(renderList(ev));
+        users.appendChild(renderList(user));
     } 
     
     ev.target.reset();
@@ -43,18 +46,13 @@ function renderListItem(value1, value2){
     return item;
 }
 
-function renderList(ev){
-    const user = {
-        userName: ev.target.userName.value,
-        age: ev.target.age.value,
-        favColor: renderColor(ev.target.favoriteColor.value),
-    }
-
+function renderList(data){
+    
     const list = document.createElement('ul');
     
-    const labels = Object.keys(user);
-    labels.forEach(function(label){
-        list.appendChild(renderListItem(label, user[label]));
+    const labels = Object.keys(data);
+    labels.forEach((label) => {
+        list.appendChild(renderListItem(label, data[label]));
     })
 
     return list;
